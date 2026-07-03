@@ -2,7 +2,10 @@ import { FallingPattern } from "@/components/ui/falling-pattern";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black">
+    <section
+      id="home"
+      className="relative min-h-screen w-full overflow-hidden bg-black"
+    >
       <FallingPattern
         color="rgba(255,255,255,0.35)"
         backgroundColor="#050505"
@@ -11,28 +14,37 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-[2] bg-black/30" />
 
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-6 text-center">
-        <div className="mx-auto max-w-3xl">
+      <div
+        className="pointer-events-none absolute inset-0 z-3"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 45%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 60%)",
+        }}
+      />
 
-          <h1 className="text-5xl font-bold tracking-normal text-white sm:text-6xl md:text-7xl">
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-6 pt-20 text-center">
+        <div className="mx-auto max-w-4xl">
+
+          <h1 className="text-6xl font-bold tracking-normal text-white sm:text-7xl md:text-8xl">
             Addison Hagan
           </h1>
-          <p className="mt-3 text-2xl font-medium tracking-normal text-neutral-400 sm:text-3xl">
+          <p className="mt-5 text-3xl font-medium tracking-normal text-neutral-300 sm:text-4xl">
             Software Developer
           </p>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-neutral-300 sm:text-lg">
+          <p className="mx-auto mt-10 max-w-2xl text-lg leading-7 text-neutral-300 sm:text-xl">
             I build polished, responsive web apps with Next.js, React,
             TypeScript, and real product thinking.
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#projects"
-              className="inline-flex w-48 items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-neutral-200"
+              className="inline-flex w-52 items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-base font-medium text-black transition hover:bg-neutral-200"
             >
               View Projects
               <svg
+                aria-hidden="true"
                 className="h-4 w-4"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -48,7 +60,7 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex w-48 items-center justify-center rounded-lg border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+              className="inline-flex w-52 items-center justify-center rounded-lg border border-white/15 bg-white/5 px-7 py-3.5 text-base font-medium text-white transition hover:bg-white/10"
             >
               Contact Me
             </a>
