@@ -12,7 +12,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 h-screen"
       />
 
-      <div className="absolute inset-0 z-[2] bg-black/30" />
+      <div className="absolute inset-0 z-2 bg-black/30" />
 
       <div
         className="pointer-events-none absolute inset-0 z-3"
