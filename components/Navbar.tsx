@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
-import { AnimatedThemeToggle } from "@/components/ui/animated-theme-toggle";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -17,6 +18,7 @@ const links = [
 export default function Navbar() {
   const [active, setActive] = useState("#home");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -45,28 +47,42 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  const handleNavigate = (href: string) => {
+    setActive(href);
+    setMenuOpen(false);
+  };
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        scrolled && "border-b border-white/10 bg-black/60 backdrop-blur-md"
+        (scrolled || menuOpen) &&
+          "border-b border-white/10 bg-black/60 backdrop-blur-md"
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-8">
         <a
           href="#home"
-          onClick={() => setActive("#home")}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-base font-semibold tracking-tight text-white"
+          onClick={() => handleNavigate("#home")}
+          aria-label="Addison Hagan — home"
+          className="shrink-0"
         >
-          AH
+          <Image
+            src="/logo.png"
+            alt="Addison Hagan"
+            width={879}
+            height={323}
+            priority
+            className="h-8 w-auto"
+          />
         </a>
 
-        <nav className="flex items-center gap-6 sm:gap-8">
+        <nav className="hidden items-center gap-6 sm:flex sm:gap-8">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setActive(link.href)}
+              onClick={() => handleNavigate(link.href)}
               className={cn(
                 "relative pb-2 text-sm font-medium transition",
                 active === link.href
@@ -84,9 +100,52 @@ export default function Navbar() {
               )}
             </a>
           ))}
-          <AnimatedThemeToggle />
         </nav>
+
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 text-white transition hover:bg-white/5 sm:hidden"
+        >
+          {menuOpen ? (
+            <X aria-hidden="true" className="h-4 w-4" />
+          ) : (
+            <Menu aria-hidden="true" className="h-4 w-4" />
+          )}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="border-t border-white/10 bg-black/90 backdrop-blur-md sm:hidden"
+          >
+            <nav className="flex flex-col gap-1 px-6 py-4">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => handleNavigate(link.href)}
+                  className={cn(
+                    "rounded-md px-2 py-2.5 text-sm font-medium transition",
+                    active === link.href
+                      ? "text-white"
+                      : "text-neutral-300 hover:text-white"
+                  )}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
