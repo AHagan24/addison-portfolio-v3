@@ -1,3 +1,4 @@
+import { FileText } from "lucide-react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const facts = [
@@ -61,6 +62,15 @@ export default function About() {
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition hover:border-white/20 hover:text-white"
               >
                 <BsLinkedin aria-hidden="true" className="h-4 w-4" />
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Resume"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition hover:border-white/20 hover:text-white"
+              >
+                <FileText aria-hidden="true" className="h-4 w-4" />
               </a>
             </div>
           </div>
