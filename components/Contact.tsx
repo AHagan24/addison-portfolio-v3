@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FileText, Mail } from "lucide-react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 
-const EMAIL = "addisonhagan92@gmail.com";
+const EMAIL = "hello@addisonhagan.dev";
 
 export default function Contact() {
   return (

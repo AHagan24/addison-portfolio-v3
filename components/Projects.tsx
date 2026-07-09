@@ -9,7 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 export default function Projects() {
   useEffect(() => {
     console.log(
-      "%c┌──────┐\n│  AH  │\n└──────┘\n\n%cYou found the console.\nCurious developers get further than most.\n\nLet's talk → addisonhagan92@gmail.com",
+      "%c┌──────┐\n│  AH  │\n└──────┘\n\n%cYou found the console.\nCurious developers get further than most.\n\nLet's talk → hello@addisonhagan.dev",
       "font-family: monospace; color: #ededed; font-size: 13px; line-height: 1.4;",
       "font-family: monospace; color: #a3a3a3; font-size: 12px; line-height: 1.6;"
     );
