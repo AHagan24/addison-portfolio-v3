@@ -46,7 +46,7 @@ export const projects: Project[] = [
       "AI code-review platform that generates intelligent feedback, stores review history, and helps developers improve code quality.",
     stack: ["Next.js", "OpenAI API", "MongoDB"],
     icon: Code2,
-    image: "/projects/codecritic-ai.png",
+    image: "/projects/codecritic-ai-v2.png",
     href: "https://code-critic-ai-six.vercel.app/",
   },
 ];
