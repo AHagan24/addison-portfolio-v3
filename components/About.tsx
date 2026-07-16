@@ -66,7 +66,7 @@ export default function About() {
               <a
                 href="/resume.pdf"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Resume"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-neutral-400 transition hover:border-white/20 hover:text-white"
               >
